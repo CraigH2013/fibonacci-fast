@@ -1,5 +1,5 @@
 {
-  "name": "fibonacci-fast.js",
+  "name": "fibonacci-fast",
   "version": "0.0.1",
   "description": "A fast library for computing and searching Fibonacci numbers",
   "main": "fibonacci-fast.js",
