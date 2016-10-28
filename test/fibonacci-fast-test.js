@@ -53,7 +53,7 @@ describe('fibonacci-fast.js', function() {
     });
   });
 
-  describe('iterator()', function() {
+  describe('iterator(k, n)', function() {
     it('should start at index 0 if no arguments given', function() {
       var fibs = fibonacci.iterator();
       var expectations = ['0', '1', '1', '2', '3', '5', '8', '13', '21'];
@@ -71,6 +71,46 @@ describe('fibonacci-fast.js', function() {
     it('should throw error if integer is not given', function() {
       assert.throws(function() { fibonacci.iterator(2.2); }, Error);
       assert.doesNotThrow(function() { fibonacci.iterator('2'); }, Error);
+    });
+
+    it('should be able to limit values', function() {
+      var fibs = fibonacci.iterator(0, 5);
+      var expected = [0, 1, 1, 2, 3, 5];
+
+      var i = 0;
+      for (let fib of fibs) {
+        assert.equal(fib.number.toFixed(), expected[i]);
+        i++;
+      }
+    });
+
+    it('should handle a negative n value', function() {
+      assert.throws(function() {fibonacci.iterator(0, -1);}, Error);
+    });
+  });
+
+  describe('array(k0, k1)', function() {
+    it('should give expected results', function() {
+      var expected = [0, 1, 1, 2, 3, 5];
+      fibonacci.array(0, 6).map(x => {
+        return x.number.toFixed();
+      }).forEach((x, i) => {
+        assert.equal(x, expected[i]);
+      });
+    });
+
+    it('should handle bad arguments', function(){
+      assert.throws(function () {
+        fibonacci.array(2, 1);
+      }, Error);
+
+      assert.throws(function () {
+        fibonacci.array(0);
+      }, Error);
+
+      assert.throws(function () {
+        fibonacci.array(0, 1.2);
+      }, Error);
     });
   });
 
