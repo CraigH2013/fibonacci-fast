@@ -62,6 +62,10 @@ exports.get = function(k) {
 exports.find = function(num) {
   var startTime = new Date().getTime();
 
+  if (num === undefined) {
+    throw new Error('The find function expects a number. No arguments given.');
+  }
+
   num = Big(num);
 
   if (num.eq(0)) {
@@ -102,22 +106,51 @@ exports.find = function(num) {
   }
 };
 
+
 /**
- * Create an iterator for the Fibonacci sequence
+ * Create a Fibonacci sequence iterator
  * @param  {Integer} [k] starting index of the iterator
+ * @param  {Integer} [n] number of values to limit the iterator to
  * @return {Iterator}   Fibonacci sequence iterator
  */
-exports.iterator = function(k) {
+exports.iterator = function(k, n) {
+  n = cast(n, 'integer');
+  if (n && n < 0) {
+    throw new Error('Invalid argument n. Expected a positive Integer.');
+  }
+
   if (k) {
     k = cast(k, 'integer');
     if (k === null || k < 0) {
-      throw new Error('Invalid argument. Expected a positive Integer');
+      throw new Error('Invalid argument k. Expected a positive Integer');
     }
     var result = exports.get(k);
-    return fibIterator(Big(result.number), Big(result.next), k);
+    return fibIterator(Big(result.number), Big(result.next), k, n);
   }
 
-  return fibIterator(Big(0), Big(1), 0);
+  return fibIterator(Big(0), Big(1), 0, n);
+};
+
+exports.array = function(k0, k1) {
+  k0 = cast(k0, 'integer');
+  k1 = cast(k1, 'integer');
+
+  if (k0 !== null && k1 !== null) {
+    if (k0 >= 0 && k1 >= 0) {
+      if (k1 - k0 >= 0) {
+        if (k1 === k0) {
+          return [];
+        }
+        return Array.from(exports.iterator(k0, k1 - k0 + 1));
+      } else {
+        throw new Error('k1 can not be less than k0');
+      }
+    } else {
+      throw new Error('k0 and k1 must be positive');
+    }
+  } else {
+    throw new Error('k0 and k1 must be Integers');
+  }
 };
 
 /**
@@ -129,9 +162,9 @@ exports.iterator = function(k) {
  * @param  {Integer}    k current index of the iterator
  * @return {Generator}    sequence iterator
  */
-function* fibIterator(k0, k1, k) {
-  let tmp;
-  while (true) {
+function* fibIterator(k0, k1, k, n) {
+  let tmp, i = 0;
+  while ((n && i < n - 1) || (!n && true)) {
     yield {number: k0, next: k1, index: k};
 
     tmp = k1;
@@ -139,6 +172,8 @@ function* fibIterator(k0, k1, k) {
     k1 = k1.plus(k0);
     k0 = tmp;
     k++;
+
+    i++;
   }
 }
 
