@@ -34,7 +34,7 @@ exports.get = function(k) {
     dblFibs.next();
   }
 
-  let result = dblFibs.next().value;
+  var result = dblFibs.next().value;
 
   var iterations = k - Math.pow(2, dblIterations);
 
