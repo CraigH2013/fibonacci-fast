@@ -1,24 +1,28 @@
 {
   "name": "fibonacci-fast",
   "version": "0.0.2",
-  "description": "A fast library for computing and searching Fibonacci numbers",
+  "description": "A fast module for working with Fibonacci numbers",
   "main": "fibonacci-fast.js",
   "scripts": {
     "test": "mocha; jshint ./"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CraigH2013/fibonacci.git"
+    "url": "git+https://github.com/CraigH2013/fibonacci-fast.git"
   },
   "keywords": [
-    "fibonacci"
+    "fibonacci",
+    "fast",
+    "sequence",
+    "big.js",
+    "math"
   ],
   "author": "Craig Harrison",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CraigH2013/fibonacci/issues"
+    "url": "https://github.com/CraigH2013/fibonacci-fast/issues"
   },
-  "homepage": "https://github.com/CraigH2013/fibonacci#readme",
+  "homepage": "https://github.com/CraigH2013/fibonacci-fast#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "cli-color": "^1.1.0",
