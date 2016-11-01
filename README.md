@@ -6,6 +6,7 @@ A fast node.js module for working with the Fibonacci sequence
 $ npm install fibonacci-fast
 ```
 ## Usage
+Documentation can be found [here](https://craigh2013.github.io/fibonacci-fast/)
 
 ### fibonacci.get(k)
 Get the kth index of the Fibonacci sequence
