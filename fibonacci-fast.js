@@ -169,6 +169,12 @@ exports.iterator = function(k, n) {
   return fibIterator(Big(0), Big(1), 0, n);
 };
 
+/**
+ * Grab an array of the Fibonacci sequence
+ * @param  {Integer} k0 the starting index
+ * @param  {Integer} k1 the ending index
+ * @return {Array}    an array from index k0 up to but not including k1
+ */
 exports.array = function(k0, k1) {
   // try casting k0 and k1 as ints
   k0 = cast(k0, 'integer');
@@ -183,7 +189,7 @@ exports.array = function(k0, k1) {
         if (k1 === k0) {
           return [];
         }
-        return Array.from(exports.iterator(k0, k1 - k0 + 1));
+        return Array.from(exports.iterator(k0, k1 - k0));
       } else {
         throw new Error('k1 can not be less than k0');
       }
@@ -206,7 +212,7 @@ exports.array = function(k0, k1) {
  */
 function* fibIterator(k0, k1, k, n) {
   let tmp, i = 0;
-  while ((n && i < n - 1) || (!n && true)) {
+  while ((n && i < n) || (!n && true)) {
     yield {number: k0, next: k1, index: k};
 
     tmp = k1;
