@@ -18,11 +18,11 @@ describe('fibonacci-fast.js', function() {
       assert.equal(fibonacci.get(174).number, 0xc711cf991d7d21b50dac229895a6e8);
     });
 
-    it('it should be able to get big numbers', function() {
-      assert.equal(
-        fibonacci.get(30000).number.toFixed(), testvars.numbers.fib30000
-      );
-    });
+    // it('it should be able to get big numbers', function() {
+    //   assert.equal(
+    //     fibonacci.get(30000).number.toFixed(), testvars.numbers.fib30000
+    //   );
+    // });
 
     it('should handle bad input', function() {
       assert.throws(function(){ fibonacci.get(-1); }, Error);
@@ -40,16 +40,31 @@ describe('fibonacci-fast.js', function() {
       assert.equal(fibonacci.find('1779979416004714189').index, 89);
     });
 
-    it('should be able to find big numbers', function() {
-      assert.equal(
-        fibonacci.find(testvars.numbers.fib30000).index, 30000
-      );
-    });
+    // it('should be able to find big numbers', function() {
+    //   assert.equal(
+    //     fibonacci.find(testvars.numbers.fib30000).index, 30000
+    //   );
+    // });
 
     it('should handle bad input', function() {
       assert.throws(function(){fibonacci.find('abc'); }, Error);
       assert.equal(fibonacci.find('28657').index, 23);
       assert.throws(function(){fibonacci.find(-1); }, Error);
+    });
+  });
+
+  describe('is(num)', function() {
+    it('should give correct answers', function() {
+      assert.equal(fibonacci.is(24157817), true);
+      assert.equal(fibonacci.is(378), false);
+    });
+
+    it('should handle negative input', function() {
+      assert.equal(fibonacci.is(-1), false);
+    });
+
+    it('should handle bad input', function() {
+      assert.throws(function() { fibonacci.is('abc'); }, Error);
     });
   });
 

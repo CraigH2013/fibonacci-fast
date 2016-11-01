@@ -3,6 +3,8 @@
 const Big = require('big.js');
 const cast = require('cast');
 
+const NOT_IN_SEQUENCE_ERROR = 'Number is not in the Fibonacci sequence';
+
 /**
  * Get the kth index of the Fibonacci sequence
  *
@@ -130,8 +132,27 @@ exports.find = function(num) {
     };
   } else {
     // if the current number does not match, the number given isn't a Fibonacci
-    throw new Error('Number is not in the Fibonacci sequence');
+    throw new Error(NOT_IN_SEQUENCE_ERROR);
   }
+};
+
+/**
+ * Checks if a given number is a Fibonacci number
+ * @param  {Big | String | Integer}  num [description]
+ * @return {Boolean}     is number in Fibonacci sequence
+ */
+exports.is = function(num) {
+  try {
+    exports.find(num);
+  } catch (err) {
+    if (err.message === NOT_IN_SEQUENCE_ERROR) {
+      return false;
+    } else {
+      throw err;
+    }
+  }
+
+  return true;
 };
 
 
