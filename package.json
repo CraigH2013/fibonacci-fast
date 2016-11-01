@@ -1,7 +1,7 @@
 {
   "name": "fibonacci-fast",
   "version": "0.1.1",
-  "description": "A fast module for working with Fibonacci numbers",
+  "description": "A fast node.js module for working with the Fibonacci sequence",
   "main": "fibonacci-fast.js",
   "scripts": {
     "test": "mocha; jshint ./"
