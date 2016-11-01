@@ -40,6 +40,14 @@ var index = result.index; // index = 7
 
 The `result` will be the same form as the result of the `fibonacci.get(n)` method, so the `index` can be retrieved easily with `result.index`. This also means that the `number` and `next` values are returned in the `result` variable as well.
 
+### fibonacci.is(num)
+Checks if a given number is a Fibonacci number
+
+```javascript
+fibonacci.is(34); // true
+fibonacci.is(35); // false
+```
+
 ### fibonacci.iterator([k, n])
 Create a Fibonacci sequence iterator. Where `k` and `n` are optional parameters defining the starting index of the iterator and the max number of iterations respectively. If `k` is not given, then the iterator will start at index 0. If `n` is not given the iterator will allow infinite iterations.
 
