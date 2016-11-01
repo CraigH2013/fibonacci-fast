@@ -138,7 +138,7 @@ exports.find = function(num) {
 
 /**
  * Checks if a given number is a Fibonacci number
- * @param  {Big | String | Integer}  num [description]
+ * @param  {Big | String | Integer}  num number to check
  * @return {Boolean}     is number in Fibonacci sequence
  */
 exports.is = function(num) {
