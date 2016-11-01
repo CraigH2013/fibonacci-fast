@@ -1,6 +1,6 @@
 {
   "name": "fibonacci-fast",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A fast node.js module for working with the Fibonacci sequence",
   "main": "fibonacci-fast.js",
   "scripts": {
